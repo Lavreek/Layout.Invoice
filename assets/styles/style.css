@@ -1,0 +1,426 @@
+/* -- BASE -- */
+body {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin-block-start: 0;
+    margin-block-end: 0;
+}
+main {
+	position: relative;
+}
+
+a, p {
+	font-family: Inter, sans-serif;
+}
+
+.p-block {
+	padding: 0 13.5% 0 13.5%;
+}
+
+.p-block-md {
+	padding: 0 11.5% 0 11.5%;
+}
+/* -- END BASE -- */
+
+/* -- HEADER -- */
+header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	height: 71px;
+	background: #0876A6;
+}
+
+header .header-logo {
+	transition: .5s;
+	height: 49px;
+}
+
+header .header-logo:hover {
+	transition: .5s;
+	height: 51px;
+}
+
+header .header-logo img {
+	min-width: inherit;
+	width: inherit;
+	max-width: inherit;
+
+	min-height: inherit;
+	height: inherit;
+	max-height: inherit;
+}
+
+header .header-items { }
+
+header .header-items a {
+	display: inline-block;
+
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 18px;
+	transition: .5s;
+
+	color: white;
+	text-decoration: none;
+}
+
+header .header-items a:hover {
+	font-size: 16px;
+	transition: .5s;
+}
+/* -- END HEADER -- */
+
+/* -- BANNER -- */
+.invoice-banner {
+	position: absolute;
+	width: 100%;
+}
+
+.banner-container {
+	position: relative;
+	width: 100%;
+	background: url('/assets/images/png/banner-image.png') center top no-repeat;
+	min-height: 612px;
+}
+
+.banner-container .overflow {
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+
+	background: rgba(67, 67, 67, 0.9);
+}
+
+.banner-container img {
+	width: 100%;
+	height: 100%;
+}
+
+/* -- END BANNER -- */
+
+/* -- INVOICE CONTAINER -- */
+.invoice-container {
+	position: relative;
+	top: 0; bottom: 0; left: 0; right: 0;
+	width: -webkit-fill-available;
+
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.invoice-container .command-group .group-breadcrumb {
+	display: flex;
+	flex-direction: row;
+
+	margin: 0 0 25px 0;
+}
+
+.invoice-container .command-group .group-breadcrumb .bread-node {
+	font-weight: 300; /* font-weight: 400; - Слишком толстый */ 
+	font-size: 16px;
+	line-height: 19px;
+	
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: .5s;
+
+	color: white;
+}
+
+.invoice-container .command-group .group-breadcrumb .bread-node:hover {
+	transition: .5s;
+	font-size: 17px;
+
+}
+
+.invoice-container .command-group .group-breadcrumb .bread-node + .bread-node:before {
+	margin: 0 .5em;
+	content: ' / ';
+}
+
+.invoice-container .command-group .group-title {
+	font-weight: 600;
+	font-size: 27px;
+	line-height: 29px;
+	
+	margin-bottom: 50px;
+
+	color: white;
+}
+
+@media (max-width: 1024px) {
+	.invoice-container .command-group .group-buttons {
+		text-align: center;	
+	}
+}
+
+.invoice-container .command-group .group-buttons .group-button {
+	display: inline-block;
+	vertical-align: middle;
+	
+	border-radius: 12px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	margin: 0 50px 25px 0;
+
+	width: 125px; height: 125px;
+	max-width: 125px; max-height: 125px;
+	transition: .25s;
+	
+	background: #676767;
+}
+
+.invoice-container .command-group .group-buttons .group-button:hover {
+	transition: .25s;
+	background: #0876A6;
+}
+
+@media (max-width: 425px) {
+	.invoice-container .command-group .group-buttons .group-button {
+		margin-right: 0;
+	}
+}
+
+.invoice-container .command-group .group-buttons .group-button div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+
+	width: inherit; height: inherit;
+
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+
+.invoice-container .command-group .group-buttons .group-button img {
+	max-width: 50px;
+	margin-top: 24px; 
+}
+
+.invoice-container .command-group .group-buttons .group-button p {
+	margin-bottom: 24px; 
+}
+
+.invoice-container .file-holder {
+	margin-top: 50px;
+
+	border-radius: 24px;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.45);
+	
+	background: white;
+}
+
+.invoice-container .file-holder .file-container {
+	padding-top: 37px;
+	padding-bottom: 64px;
+}
+
+.invoice-container .file-holder .file-container .groups {
+	display: flex;
+	flex-direction: column;
+}
+
+.invoice-container .file-holder .file-container .groups .group-info {
+	margin-bottom: 40px;
+}
+
+.invoice-container .file-holder .file-container .groups .group-image {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 30px;
+	row-gap: 30px;
+	align-items: baseline;
+	justify-content: space-evenly;
+}
+
+.invoice-container .file-holder .file-container .groups .group-image img {
+	transition: .5s;
+	padding: 18px;
+	width: 100%;
+	max-width: 242px; max-height: 340px;
+	cursor: pointer;
+}
+
+.invoice-container .file-holder .file-container .groups .group-image img:hover {
+	transition: .5s;
+	transform: scale(1.05);
+	/*padding: 0;*/
+	/*width: 100%;*/
+	/*max-width: 260px; max-height: 358px;*/
+
+}
+
+@media (max-width: 1340px) {
+	.invoice-container .file-holder .file-container .groups {
+		text-align: center;
+	}
+}
+
+/* -- END INVOICE CONTAINER -- */
+
+/* -- INVOICE PROJECT SLIDER -- */
+
+.invoice-project-slider {
+	position: relative;
+}
+
+.invoice-project-slider .slider-container {
+	position: relative;
+}
+
+.invoice-project-slider .slider-container .slider-button {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+}
+
+.invoice-project-slider .slider-container .slider-button.s-btn-left {
+	left: 0;
+}
+
+.invoice-project-slider .slider-container .slider-button.s-btn-right {
+	right: 0;
+}
+
+.invoice-project-slider .slider-container .slider-content {
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	column-gap: 60px;
+	align-items: baseline;
+}
+
+.invoice-project-slider .slider-container .slider-content .slider-item {
+	display: block;
+	
+	background: #454545;
+
+	min-width: 288px;
+	width: 288px;
+	max-width: 288px;
+
+	min-height: 232px;
+	height: 232px;
+	max-height: 232px;
+}
+
+.invoice-project-slider .slider-container .slider-content .active {
+	display: block;
+	order: 3;
+
+	background: #454545;
+
+	min-width: 380px;
+	width: 380px;
+	max-width: 380px;
+
+	min-height: 316px;
+	height: 316px;
+	max-height: 316px;
+}
+
+.invoice-project-slider .slider-container .slider-content .was-big {
+	min-width: 380px;
+	width: 380px;
+	max-width: 380px;
+
+	min-height: 316px;
+	height: 316px;
+	max-height: 316px;
+}
+
+.invoice-project-slider .slider-container .slider-content .next-item {
+	order: 4;
+	background: #454545;
+}
+
+.invoice-project-slider .slider-container .slider-content .next-overflow-item {
+	order: 5;
+	background: #454545;
+	opacity: 0;
+}
+
+.invoice-project-slider .slider-container .slider-content .prev-item {
+	order: 2;
+	background: #454545;
+}
+
+.invoice-project-slider .slider-container .slider-content .prev-overflow-item {
+	order: 1;
+	background: #454545;
+	opacity: 0;
+}
+
+.invoice-project-slider .slider-container .slider-content .active-moving-right {
+	order: 3 !important;
+	transition: .5s;
+	display: block;
+	background: #454545;
+	transform: translateX(-350px);
+
+	min-width: 288px !important;
+	width: 288px !important;
+	max-width: 288px !important;
+
+	min-height: 232px !important;
+	height: 232px !important;
+	max-height: 232px !important;
+}
+
+.invoice-project-slider .slider-container .slider-content .prev-item-moving-right {
+	order: 2 !important;
+	transition: .5s;
+	background: #454545;
+	transform: translateX(-350px);
+	opacity: 0;
+}
+
+.invoice-project-slider .slider-container .slider-content .prev-overflow-moving-right {
+	order: 1 !important;
+	transition: .5s;
+	background: #454545;
+	opacity: 0;
+}
+
+.invoice-project-slider .slider-container .slider-content .next-item-moving-right {
+	order: 4 !important;
+	transition: .5s;
+	background: #454545;
+	transform: translateX(-350px);
+
+	min-width: 380px;
+	width: 380px;
+	max-width: 380px;
+
+	min-height: 316px;
+	height: 316px;
+	max-height: 316px;
+}
+
+.invoice-project-slider .slider-container .slider-content .next-overflow-moving-right {
+	order: 5 !important;
+	transition: .5s;
+	background: #454545;
+	transform: translateX(-350px);
+}
+
+.invoice-project-slider .slider-container .slider-content .prev-overflow-moving-right {
+	transition: .5s;
+	background: #454545;
+}
+
+
+
+/* -- END INVOICE PROJECT SLIDER -- */
