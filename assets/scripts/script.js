@@ -94,11 +94,30 @@ function setupSlider(identifier) {
     }
 }
 
-$('.go-left').on('click', function () {
-    $(this).attr('disabled', 'true');
-
+function sliderMove(active, inc) {
     let slider = $('.slider-content');
     let childs = slider.children();
+
+    let currentActive = findSliderActive();
+    let newActive = currentActive + inc;
+
+    if (newActive > childs.length - 1) {
+        newActive = newActive - childs.length;
+    }
+
+    setTimeout(() => {
+        setupSlider(newActive);
+    },500);
+
+    active.removeClass('active');
+
+    setTimeout(() => {
+        removeClasses(currentActive);
+    },1000);
+}
+
+$('.go-left').on('click', function () {
+    $(this).attr('disabled', 'true');
 
     let active = $('.active').addClass('active-moving-left');
     $('.prev-item').addClass('prev-item-moving-left').removeClass('prev-item');
@@ -106,31 +125,12 @@ $('.go-left').on('click', function () {
     $('.prev-overflow-item').addClass('prev-overflow-moving-left').removeClass('prev-overflow-item');
     $('.next-overflow-item').addClass('next-overflow-moving-left').removeClass('next-overflow-item');
 
-    let currentActive = findSliderActive();
-    let newActive = currentActive - 1;
-
-    if (newActive < 0) {
-        newActive = newActive + childs.length;
-    }
-
-    setTimeout(() => {
-        setupSlider(newActive);
-    },500);
-
-    active.removeClass('active');
-
-    setTimeout(() => {
-        removeClasses(currentActive);
-    },1000);
-
+    sliderMove(active,-1);
 });
 
 
 $('.go-right').on('click', function () {
     $(this).attr('disabled', 'true');
-
-    let slider = $('.slider-content');
-    let childs = slider.children();
 
     let active = $('.active').addClass('active-moving-right');
     $('.prev-item').addClass('prev-item-moving-right').removeClass('prev-item');
@@ -138,23 +138,9 @@ $('.go-right').on('click', function () {
     $('.prev-overflow-item').addClass('prev-overflow-moving-right').removeClass('prev-overflow-item');
     $('.next-overflow-item').addClass('next-overflow-moving-right').removeClass('next-overflow-item');
 
-    let currentActive = findSliderActive();
-    let newActive = currentActive + 1;
-
-    if (newActive > childs.length - 1) {
-         newActive = newActive - childs.length;
-    }
-
-    setTimeout(() => {
-        setupSlider(newActive);
-    },500);
-
-    active.removeClass('active');
-
-    setTimeout(() => {
-        removeClasses(currentActive);
-    },1000);
+    sliderMove(active,+1);
 });
+
 
 let currentActive = findSliderActive();
 setupSlider(currentActive);
