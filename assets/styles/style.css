@@ -5,9 +5,13 @@ body {
 	min-width: 320px;
 }
 
-p {
+p, ul {
 	margin-block-start: 0;
     margin-block-end: 0;
+}
+
+ul {
+	padding-inline-start: 0;
 }
 main {
 	position: relative;
@@ -57,7 +61,8 @@ header .header-logo:hover {
 	transition: .5s;
 }
 
-header .header-logo img {
+header .header-logo img,
+footer .footer-logo img {
 	min-width: inherit;
 	width: inherit;
 	max-width: inherit;
@@ -662,29 +667,93 @@ footer .footer-container {
 	display: grid;
 	grid-template-columns: repeat(3, auto);
 	justify-content: space-between;
+	row-gap: 10px;
+	column-gap: 20px;
 }
 
 footer .footer-container .footer-logo {
-	margin-bottom: 131px;
+	/*margin-bottom: 121px;*/
 }
 
 footer .footer-container .companies {
-	margin-bottom: 41px;
+	padding-top: 10px;
+	/*margin-bottom: 41px;*/
+}
+
+footer .footer-container .pay-services {
+	padding-top: 25px;
 }
 
 footer .footer-container .contacts {
-	margin-bottom: 26px;
+	/*margin-bottom: 16px;*/
 }
 
+footer .footer-container .contacts .contacts-title {
+	margin-bottom: 20px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 18px;
+	color: #CCCCCC;
+}
+
+footer .footer-container .connect-to-us {
+	/*margin-bottom: 78px;*/
+}
 
 footer .footer-container .connect-to-us .contacts-text {
-	margin-bottom: 1em;
+	margin-bottom: 20px;
 	font-weight: 400;
 	font-size: 15px;
 	line-height: 18px;
 	color: #BCBCBC;
 	cursor: default;
 }
+footer .footer-container .contacts .contacts-link {
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 18px;
+	color: #999999;
+	vertical-align: middle;
+	transition: .25s;
+}
+
+footer .footer-container .contacts .contacts-link:hover {
+	color: white;
+	transition: .25s;
+}
+
+footer .footer-container .site-links .site-link-list {
+	list-style: none;
+	text-align: right;
+}
+
+footer .footer-container .site-links .site-link-list li + li {
+	margin-top: .75em;
+}
+
+footer .footer-container .site-links .site-link-list .site-link {
+	text-decoration: none;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 15px;
+	text-align: right;
+	color: #ECECEC;
+}
+
+footer .footer-container .site-links .site-link-list .site-link:hover {
+	text-decoration: underline;
+}
+
+footer .footer-container .company-legend {
+	padding-top: 41px;
+	cursor:default;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 15px;
+	color: #CBCBCB;
+}
+
 footer .footer-container .pay-services .pay-services-links a,
 footer .footer-container .contacts .contacts-icon,
 footer .footer-container .companies .companies-links a,
@@ -707,5 +776,99 @@ footer .footer-container .connect-to-us .contacts-links a + a {
 	margin-left: 29px;
 }
 
+@media (max-width: 1140px) {
+	footer .footer-container {
+		grid-template-columns: repeat(2, auto);
+	}
+
+	footer .footer-container .footer-logo {
+		order: 1;
+	}
+
+	footer .footer-container .connect-to-us {
+		order: 2;
+	}
+
+	footer .footer-container .contacts {
+		order: 3;
+	}
+
+	footer .footer-container .site-links {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		order: 4;
+	}
+
+	footer .footer-container .companies {
+		order: 5;
+	}
+
+	footer .footer-container .pay-services {
+		order: 6;
+	}
+
+	footer .footer-container .company-legend {
+		order: 7;
+	}
+}
+
+@media (max-width: 768px) {
+	footer .footer-container {
+		grid-template-columns: auto;
+		justify-content: center;
+		row-gap: 30px;
+	}
+
+	footer .footer-container .footer-logo {
+		margin: auto;
+		order: 1;
+	}
+
+	footer .footer-container .contacts {
+		order: 2;
+	}
+
+	footer .footer-container .connect-to-us {
+		text-align: center;
+		order: 3;
+		padding-bottom: 30px;
+	}
+
+	footer .footer-container .contacts .contacts-title {
+		text-align: center;
+	}
+
+	footer .footer-container .companies {
+		order: 4;
+		text-align: center;
+		padding-top: 0;
+	}
+
+	footer .footer-container .companies .companies-links img {
+		width: calc(30px + (100vw - 320px) * (5 / 448));
+	}
+
+	footer .footer-container .pay-services {
+		order: 5;
+		text-align: center;
+		padding-top: 0;
+	}
+
+	footer .footer-container .site-links {
+		text-align: center;
+		order: 6;
+	}
+
+	footer .footer-container .site-links .site-link-list {
+		text-align: center;
+	}
+
+	footer .footer-container .company-legend {
+		order: 7;
+		text-align: center;
+	}
+}
 
 /* -- END INVOICE FOOTER -- */
