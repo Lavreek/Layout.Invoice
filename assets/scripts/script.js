@@ -70,26 +70,28 @@ function setupSlider(identifier) {
 
         if (identifier + 1 > actualCount) {
             slider.children().eq(identifier - actualCount).addClass('next');
+            slides.push(identifier - actualCount);
+
         } else {
-            slides.push(identifier + 1);
             slider.children().eq(identifier + 1).addClass('next');
+            slides.push(identifier + 1);
         }
 
         if (identifier + 2 > actualCount) {
             slider.children().eq(identifier + 1 - actualCount).addClass('nof');
+            slides.push(identifier + 1 - actualCount);
 
         } else {
-            slides.push(identifier + 2);
-
             slider.children().eq(identifier + 2).addClass('nof');
+            slides.push(identifier + 2);
         }
 
         if (identifier - 1 < 0) {
-            slides.push(identifier + actualCount);
-
             slider.children().eq(identifier + actualCount).addClass('prev');
+            slides.push(identifier + actualCount);
         } else {
             slider.children().eq(identifier - 1).addClass('prev');
+            slides.push(identifier - 1);
         }
 
         if (identifier - 2 < 0) {
@@ -98,6 +100,7 @@ function setupSlider(identifier) {
 
         } else {
             slider.children().eq(identifier - 2).addClass('pof');
+            slides.push(identifier - 2);
         }
 
         childs.each(function (identifier) {
@@ -107,8 +110,6 @@ function setupSlider(identifier) {
                 slider.children().eq(identifier).addClass('inactive');
             }
         });
-
-        console.log(slides);
     }
 }
 
@@ -188,11 +189,10 @@ function sliderMoveRight(slider, childs, btn) {
     }
 
     slider.children().eq(newPof).addClass('nof').removeClass('inactive');
-
     btn.removeAttr('disabled');
 }
 
-function sliderMove(active, inc) {
+function sliderMove(inc) {
     let slider = $('.slider-content');
     let childs = slider.children();
 
@@ -213,41 +213,33 @@ function sliderMove(active, inc) {
                 sliderMoveLeft(slider, childs, $('.go-left'));
                 break;
         }
-    },250);
+    }, 250);
 }
 
 $('.go-left').on('click', function () {
     $(this).attr('disabled', 'true');
 
-    let active = $('.active').addClass('active-l-moving');
+    $('.active').addClass('active-l-moving');
     $('.prev').addClass('prev-l-moving');
     $('.next').addClass('next-l-moving');
     $('.pof').addClass('pof-l-moving');
     $('.nof').addClass('nof-l-moving');
 
-    sliderMove(active,-1);
+    sliderMove(-1);
 });
-
 
 $('.go-right').on('click', function () {
     $(this).attr('disabled', 'true');
 
-    let active = $('.active').addClass('active-r-moving');
+    $('.active').addClass('active-r-moving');
     $('.prev').addClass('prev-r-moving');
     $('.next').addClass('next-r-moving');
     $('.pof').addClass('pof-r-moving');
     $('.nof').addClass('nof-r-moving');
 
-    sliderMove(active,+1);
+    sliderMove(+1);
 });
 
 
 let currentActive = findSliderActive();
 setupSlider(currentActive);
-
-// $(window).on('resize', function () {
-//     let screenWidth = $(this).width;
-    // if (screenWidth > 425 && screenWidth <= 576) {
-    //     $('.active').css('scale', (1 + (screenWidth - 320) * (0.3 / 151)));
-    // }
-// });
