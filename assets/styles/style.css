@@ -5,6 +5,10 @@ body {
 	min-width: 320px;
 }
 
+.noscroll {
+	overflow: hidden;
+}
+
 p, ul {
 	margin-block-start: 0;
     margin-block-end: 0;
@@ -288,12 +292,13 @@ header .header-items a:hover {
 	justify-content: space-evenly;
 }
 
-.invoice-container .file-holder .file-container .groups .group-image img {
+.invoice-container .file-holder .file-container .groups .group-image canvas {
 	transition: .5s;
 	width: 100%;
 	max-width: 242px;
 	max-height: 340px;
 	cursor: pointer;
+	box-shadow: 0 0 30px -15px rgba(0, 0, 0, .5);
 }
 
 .invoice-container .file-holder .file-container .groups .group-image img:hover {
@@ -357,6 +362,7 @@ header .header-items a:hover {
 	border-radius: 12px;
 	max-width: 118px;
 	max-height: 118px;
+	z-index: 1;
 }
 
 .invoice-qr-code .qr-code-container .qr-code-text {
@@ -873,16 +879,27 @@ footer .footer-container .connect-to-us .contacts-links a + a {
 /* -- END INVOICE FOOTER -- */
 
 /* -- INVOICE MODAL -- */
-.invoice-modal {
+.invoice-modal .modal-container {
+	display: none;
+	justify-content: center;
+	flex-wrap: wrap;
 	position: fixed;
 	background: rgba(69, 69, 69, .5);
+	min-height: 100vh;
+	height: 100%;
+	box-sizing: border-box;
+	overflow-y: scroll;
+	z-index: 2;
 	top: 0;
 	right: 0;
-	bottom: 0;
 	left: 0;
-	height: 100%;
-	z-index: 1;
+	inset: 0;
 }
+
+.invoice-modal .modal-container canvas {
+	position: static;
+}
+
 /* -- END INVOICE MODAL -- */
 
 /* -- INVOICE SCROLLBAR -- */

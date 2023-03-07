@@ -240,6 +240,5 @@ $('.go-right').on('click', function () {
     sliderMove(+1);
 });
 
-
 let currentActive = findSliderActive();
 setupSlider(currentActive);

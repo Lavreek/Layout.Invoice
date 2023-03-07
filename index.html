@@ -96,12 +96,7 @@
 							<p>Название файла</p>
 							<p>Коммерческое предложение и счет на оплату №29837 от 5 сентября 2022 г..pdf (909.97 Кб)</p>
 						</div>
-						<div class="group-image">
-							<img src="/assets/images/png/file-1.png" alt="">
-							<img src="/assets/images/png/file-2.png" alt="">
-							<img src="/assets/images/png/file-3.png" alt="">
-							<img src="/assets/images/png/file-4.png" alt="">
-						</div>
+						<div class="group-image" id="file-preview"></div>
 					</div>
 				</div>
 			</div>
@@ -199,7 +194,7 @@
 	</main>
 	<div class="invoice-modal">
 		<div class="modal-container">
-<!--			<img src="/assets/"-->
+			<canvas id="file-fullsize"></canvas>
 		</div>
 	</div>
 	<footer>
@@ -309,6 +304,57 @@
 		</div>
 	</footer>
 	<script type="text/javascript" src="/assets/scripts/jquery-3.6.3.min.js"></script>
+	<script type="text/javascript" src="/node_modules/pdfjs-dist/build/pdf.js"></script>
 	<script type="text/javascript" src="/assets/scripts/script.js"></script>
+	<script>
+		var pdfjsLib = window['pdfjs-dist/build/pdf'];
+		pdfjsLib.GlobalWorkerOptions.workerSrc = '/node_modules/pdfjs-dist/build/pdf.worker.min.js';
+		pdfjsLib.getDocument('/assets/files/Коммерческое предложение и счет на оплату №29837 от 5 сентября 2022 г..pdf').promise.then(doc => {
+			let pages_count = doc._pdfInfo.numPages;
+
+			for (let i = 1; i <= pages_count; i++) {
+				doc.getPage(i).then(page => {
+					let canvas = document.createElement('canvas');
+
+					canvas.setAttribute('data-page', i);
+
+					canvas.onclick = function () {
+						$('body').css('overflow', 'hidden');
+						let canvas = document.getElementById('file-fullsize');
+						canvas.parentNode.style.display = 'flex';
+						let context = canvas.getContext('2d');
+						let viewport = page.getViewport({scale: 2});
+
+						canvas.width = viewport.width;
+						canvas.height = viewport.height;
+
+						canvas.parentNode.onclick = function (e) {
+							if (!$(e.target).closest('span.options').length) {
+								$('body').css('overflow', 'auto');
+								this.style.display = 'none';
+							}
+						};
+
+						page.render({
+							canvasContext: context,
+							viewport: viewport
+						});
+					};
+
+					document.querySelector('#file-preview').appendChild(canvas);
+					let context = canvas.getContext('2d');
+					let viewport = page.getViewport({scale: 1});
+
+					canvas.width = viewport.viewBox[2];
+					canvas.height = viewport.viewBox[3];
+
+					page.render({
+						canvasContext: context,
+						viewport: viewport
+					});
+				});
+			}
+		});
+	</script>
 </body>
 </html>
