@@ -286,10 +286,11 @@ header .header-items a:hover {
 .invoice-container .file-holder .file-container .groups .group-image {
 	display: flex;
 	flex-wrap: wrap;
-	column-gap: 30px;
+	column-gap: calc(0px + (100vw - 320px) * (30 / 1600));
 	row-gap: calc(0px + (100vw - 320px) * (30 / 1600));
 	align-items: baseline;
 	justify-content: space-evenly;
+	padding: 0 calc(20px + (100vw - 1440px) * (142 / 480));
 }
 
 .invoice-container .file-holder .file-container .groups .group-image canvas {
@@ -297,13 +298,19 @@ header .header-items a:hover {
 	width: 100%;
 	max-width: 242px;
 	max-height: 340px;
-	cursor: pointer;
-	box-shadow: 0 0 30px -15px rgba(0, 0, 0, .5);
+	filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+	cursor: zoom-in;
 }
 
 .invoice-container .file-holder .file-container .groups .group-image img:hover {
 	transition: .5s;
 	transform: scale(1.025);
+}
+
+@media (max-width: 1440px) {
+	.invoice-container .file-holder .file-container .groups .group-image {
+		padding: 0 20px;
+	}
 }
 
 @media (max-width: 1340px) {
@@ -888,6 +895,7 @@ footer .footer-container .connect-to-us .contacts-links a + a {
 	min-height: 100vh;
 	height: 100%;
 	box-sizing: border-box;
+	overflow-x: hidden;
 	overflow-y: scroll;
 	z-index: 2;
 	top: 0;
@@ -898,8 +906,22 @@ footer .footer-container .connect-to-us .contacts-links a + a {
 
 .invoice-modal .modal-container canvas {
 	position: static;
+	cursor: zoom-out;
 }
 
+@media (max-width: 768px) {
+	.invoice-modal .modal-container canvas {
+		width: 100vw;
+		height: auto;
+		margin: auto;
+	}
+}
+
+@media (max-width: 576px) {
+	.invoice-modal .modal-container canvas {
+		margin: auto calc(0px - (100vw - 320px) * (20 / 256));
+	}
+}
 /* -- END INVOICE MODAL -- */
 
 /* -- INVOICE SCROLLBAR -- */
@@ -922,5 +944,4 @@ footer .footer-container .connect-to-us .contacts-links a + a {
 	border-radius: 12px;
 	border: 1px solid #454545;
 }
-
 /* -- END INVOICE SCROLLBAR -- */
